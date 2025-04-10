@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Full Screen AR</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-      /* HTML, Body の余白をなくし、スクロールも無効にします */
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-      }
-      /* model-viewer を画面全体に広げます */
-      model-viewer {
-        width: 100vw;
-        height: 100vh;
-        display: block;
-        touch-action: none; /* タッチ操作によるスクロールを防止 */
-      }
-    </style>
-  </head>
-  <body>
-    <model-viewer
-      ar
-      ar-modes="scene-viewer webxr quick-look"
-      src="./cyawan.glb"
-      ios-src="./cyawan.usdz"
-      alt="Cyawan"
-      auto-rotate
-      camera-controls
-    ></model-viewer>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Model Viewer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* ページ全体の余白・スクロールを無効にして、ビューポート全体を確保 */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* 全体のスクロールを無効にする */
+      height: 100%;
+    }
+
+    /* <model-viewer>自身に全画面表示とタッチ操作の制御を適用 */
+    model-viewer {
+      width: 100vw;
+      height: 100vh - 10;
+      display: block;    /* インライン要素の特性を防ぐ */
+      touch-action: none; /* タッチ操作によるスクロールやパンを無効化 */
+    }
+  </style>
+</head>
+<body>
+  <model-viewer
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    src="./cyawan.glb"
+    ios-src="./cyawan.usdz"
+    alt="Cyawan"
+    auto-rotate
+    camera-controls>
+  </model-viewer>
+</body>
 </html>
