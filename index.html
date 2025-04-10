@@ -2,36 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <!-- viewport-fit=cover を追加して、全画面表示時に安全領域を活用 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Full-Screen AR Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Screen AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
+      /* HTML, Body の余白をなくし、スクロールも無効にします */
       html, body {
         margin: 0;
         padding: 0;
-        width: 100%;
         height: 100%;
         overflow: hidden;
       }
-      /* 安全領域を考慮したサイズ指定（上下の安全領域分を差し引く） */
-      .full-screen {
+      /* model-viewer を画面全体に広げます */
+      model-viewer {
         width: 100vw;
-        height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-        box-sizing: border-box;
+        height: 100vh;
+        display: block;
+        touch-action: none; /* タッチ操作によるスクロールを防止 */
       }
     </style>
   </head>
   <body>
     <model-viewer
-      class="full-screen"
       ar
       ar-modes="scene-viewer webxr quick-look"
       src="./cyawan.glb"
       ios-src="./cyawan.usdz"
       alt="Cyawan"
       auto-rotate
-      camera-controls>
-    </model-viewer>
+      camera-controls
+    ></model-viewer>
   </body>
 </html>
