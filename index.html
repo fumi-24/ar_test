@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <!-- viewport-fit=cover を追加 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>ARとボタンのレイアウト例</title>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    /* 全画面をカバーするAR領域 */
-    .ar-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      touch-action: none;
-    }
-
-    /* 安全領域に合わせたボタンの配置 */
-    .button-container {
-      position: absolute;
-      bottom: calc(20px + env(safe-area-inset-bottom));
-      right: calc(20px + env(safe-area-inset-right));
-      z-index: 10;
-    }
-  </style>
-</head>
-<body>
-  <div class="ar-container">
-    <model-viewer
-      ar
-      ar-modes="scene-viewer webxr quick-look"
-      src="./cyawan.glb"
-      ios-src="./cyawan.usdz"
-      alt="Cyawan"
-      auto-rotate
-      camera-controls
-    ></model-viewer>
-    <div class="button-container">
-      <button type="button">ボタン</button>
+  <head>
+    <meta charset="utf-8" />
+    <!-- viewport-fit=cover を追加して全画面利用を可能に -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ARとボタンの安全領域レイアウト例</title>
+    <!-- model-viewer の読み込み -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      /* HTML, body の余白・スクロールなどを初期化 */
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      
+      /* AR表示エリア */
+      .ar-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+      
+      model-viewer {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        display: block;
+      }
+      
+      /* ボタンは安全領域を考慮して右下に配置 */
+      .button-container {
+        position: absolute;
+        bottom: calc(20px + var(--safe-area-inset-bottom, 0px));
+        right: calc(20px + var(--safe-area-inset-right, 0px));
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ar-container">
+      <model-viewer
+        ar
+        ar-modes="scene-viewer webxr quick-look"
+        src="./cyawan.glb"
+        ios-src="./cyawan.usdz"
+        alt="Cyawan"
+        auto-rotate
+        camera-controls
+      ></model-viewer>
+      <div class="button-container">
+        <button type="button">ボタン</button>
+      </div>
     </div>
-  </div>
-</body>
+    
+    <!-- Visual Viewport API を利用して安全領域の余白を動的に計算 -->
+    <script>
+      if (window.visualViewport) {
+        const updateSafeAreaInsets = () => {
+          // ビジュアルビューポートとレイアウトビューポートとの差を安全領域とみなす
+          const bottomInset = window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop;
+          const rightInset = window.innerWidth - window.visualViewport.width - window.visualViewport.offsetLeft;
+          document.documentElement.style.setProperty('--safe-area-inset-bottom', bottomInset + 'px');
+          document.documentElement.style.setProperty('--safe-area-inset-right', rightInset + 'px');
+        };
+        
+        // 初期計算
+        updateSafeAreaInsets();
+        // リサイズ、スクロール時に更新
+        window.visualViewport.addEventListener('resize', updateSafeAreaInsets);
+        window.visualViewport.addEventListener('scroll', updateSafeAreaInsets);
+      }
+    </script>
+  </body>
 </html>
