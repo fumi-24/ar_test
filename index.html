@@ -51,7 +51,8 @@
   </model-viewer>
   <script>
     let input_name = document.getElementById("name_id");
-    let viewer_3d = document.getElementsByName("viewer");
+    // let viewer_3d = document.getElementsByName("viewer");
+    let viewer_3d = document.querySelector("model-viewer");
     // イベントリスナーでイベント「change」を登録
     input_name.addEventListener("change",function(){
       console.log("Change model");
