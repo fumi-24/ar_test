@@ -49,18 +49,18 @@
     camera-controls>
   </model-viewer>
   <script>
-    let input_name = document.getElementById("name_id");
-    // let viewer_3d = document.getElementsByName("viewer");
-    let viewer_3d = document.querySelector("model-viewer");
-    // イベントリスナーでイベント「change」を登録
-    input_name.addEventListener("change",function(){
-      console.log("Change model");
-      console.log(this.value);
-      console.log("./"+this.value+".glb")
-      // viewer_3d.setAttribute("src","./"+this.value+".glb")
-      viewer_3d.src = "./"+this.value+".glb";
-      // viewer_3d.setAttribute("ios-src","./"+this.value+".usdz")
-      viewer_3d.iosSrc = "./"+this.value+".usdz";
+    // let input_name = document.getElementById("name_id");
+    // // let viewer_3d = document.getElementsByName("viewer");
+    // let viewer_3d = document.querySelector("model-viewer");
+    // // イベントリスナーでイベント「change」を登録
+    // input_name.addEventListener("change",function(){
+    //   console.log("Change model");
+    //   console.log(this.value);
+    //   console.log("./"+this.value+".glb")
+    //   // viewer_3d.setAttribute("src","./"+this.value+".glb")
+    //   viewer_3d.src = "./"+this.value+".glb";
+    //   // viewer_3d.setAttribute("ios-src","./"+this.value+".usdz")
+    //   viewer_3d.iosSrc = "./"+this.value+".usdz";
     });
   </script>
 </body>
