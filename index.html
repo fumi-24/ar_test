@@ -41,6 +41,7 @@
 <body>
   <model-viewer
     ar
+    name="viewer"
     ar-modes="scene-viewer webxr quick-look"
     src="./donut.glb"
     ios-src="./donut.usdz"
@@ -56,9 +57,9 @@
       console.log("Change model");
       console.log(this.value);
       // viewer_3d.setAttribute("src","./"+this.value+".glb")
-      //viewer_3d.src = "./"+this.value+".glb";
+      viewer_3d.src = "./"+this.value+".glb";
       // viewer_3d.setAttribute("ios-src","./"+this.value+".usdz")
-      //viewer_3d.iosSrc = "./"+this.value+".usdz";
+      viewer_3d.iosSrc = "./"+this.value+".usdz";
     });
   </script>
 </body>
