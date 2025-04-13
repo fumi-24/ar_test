@@ -21,7 +21,11 @@
       overflow: hidden; /* 全体のスクロールを無効にする */
       height: 100%;
     }
-
+    model-viewer::part(progress-bar) {
+        height: 8px; /* バーの高さ */
+        background: linear-gradient(90deg, #ff8a00, #e52e71); /* おしゃれなグラデーション */
+        border-radius: 4px; /* 丸みを持たせる */
+      }
     /* <model-viewer>自身に全画面表示とタッチ操作の制御を適用 */
     model-viewer {
       width: 100vw;
