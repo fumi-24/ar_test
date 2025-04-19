@@ -14,6 +14,23 @@
       height: 100%;
     }
     
+     /* 共通スタイル */
+    input {
+      /* アニメーションの時間・イージングを指定 */
+      transition: box-shadow 0.3s ease-in-out;
+      /* デフォルトのアウトラインを消したい場合 */
+      outline: none;
+      /* 余白や線のスタイルはお好みで */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    /* フォーカス時 */
+    input:focus {
+      /* 軽いぼかしの影を付ける */
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    
     .progress-bar {
       position: absolute;
       top: 50%;
