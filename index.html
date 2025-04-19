@@ -22,22 +22,24 @@
       height: 100%;
     }
     .progress-bar {
-      position: absolute;
-/*       bottom: 20px;
-      left: 50%; */
-      transform: translateX(-50%);
-      width: 80%;
-      height: 6px;
+      display: block;
+      width: 100%;
+      height: 8px;
+      /* 例：背景色を仮設定 */
       background: rgba(0,0,0,0.1);
-      border-radius: 3px;
-      overflow: hidden;
     }
-    /* 進捗部分 */
+    
     .update-bar {
-      height: 100%;
       width: 0%;
-      background: linear-gradient(to right, #3b82f6, #06b6d4);
-      transition: width 0.1s ease-out;
+      height: 100%;
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      transition: width 0.2s ease;
+    }
+/*     model-viewer::part(progress-bar) {
+        height: 8px;
+        background: linear-gradient(90deg, #ff8a00, #e52e71);
+        border-radius: 4px;
+      } */
     /* <model-viewer>自身に全画面表示とタッチ操作の制御を適用 */
     model-viewer {
       width: 100vw;
@@ -62,26 +64,11 @@
     alt="Cyawan"
     auto-rotate
     camera-controls>
+    <div class="progress-bar" slot="progress-bar hide">
+      <div class="update-bar" style="width: 0%;"></div>
+    </div>
   </model-viewer>
-  <div slot="progress-bar" class="progress-bar">
-    <div class="update-bar"></div>
-  </div>
   <script>
-    const mv = document.querySelector('#mv');
-    const bar = mv.querySelector('.update-bar');
-    const outer = mv.querySelector('.progress-bar');
-
-    // 読み込み進捗が変わるたびに呼ばれる
-    mv.addEventListener('progress', (event) => {
-      const progress = event.detail.totalProgress; // 0.0～1.0
-      bar.style.width = `${Math.floor(progress * 100)}%`;
-    });
-
-    // 完全に読み込みが終わったらバーを隠す
-    mv.addEventListener('load', () => {
-      outer.style.display = 'none';
-    });
-    
     let input_name = document.getElementById("name_id");
     // let viewer_3d = document.getElementsByName("viewer");
     let viewer_3d = document.querySelector("model-viewer");
