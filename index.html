@@ -22,19 +22,6 @@
       height: 100%;
     }
     
-    model-viewer {
-      width: 100vw;
-      height: -webkit-fill-available;
-      display: block;    /* インライン要素の特性を防ぐ */
-      touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
-    }
-    /* Webkit-fill-available未対応のブラウザ向けのスタイル */
-    @media (max-width: 767px) {
-      header {
-        height: 100vh;
-      }
-    }
-    /* 進捗バーの外枠 */
     .progress-bar {
       position: absolute;
       bottom: 20px;
@@ -52,6 +39,19 @@
       width: 0%;
       background: linear-gradient(to right, #3b82f6, #06b6d4);
       transition: width 0.1s ease-out;
+    }
+    
+    model-viewer {
+      width: 100vw;
+      height: -webkit-fill-available;
+      display: block;    /* インライン要素の特性を防ぐ */
+      touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
+    }
+    /* Webkit-fill-available未対応のブラウザ向けのスタイル */
+    @media (max-width: 767px) {
+      header {
+        height: 100vh;
+      }
     }
   </style>
 </head>
