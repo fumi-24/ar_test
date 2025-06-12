@@ -21,8 +21,8 @@
       /* デフォルトのアウトラインを消したい場合 */
       outline: none;
       /* 余白や線のスタイルはお好みで */
-      padding: 8px;
-      border: 2px solid #ccc;
+      padding: 7px;
+      border: 1px solid #ccc;
       border-radius: 4px;
       font-size:20px;
       width:100%;
@@ -56,7 +56,7 @@
     model-viewer {
       position: relative;
       width: 100vw;
-      height: -webkit-fill-available;
+      height: -webkit-fill-available - ;
       display: block;    /* インライン要素の特性を防ぐ */
       touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
     }
@@ -69,14 +69,14 @@
   </style>
 </head>
 <body>
-  <label style="margin-left:5px;margin-right:3px;" for="name_id">ID:</label><input
+  <label style="margin-left:5px;margin-right:3px;width:5px;height:40px;" for="name_id">ID:</label><input
     type="text"
     id="name_id"
     name="name_id"
     value="donut"
     required
     maxlength="25"
-    size=100%/>
+  />
   <model-viewer
     ar
     ar-modes="scene-viewer webxr quick-look"
