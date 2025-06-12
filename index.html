@@ -54,7 +54,7 @@
     model-viewer {
       position: relative;
       width: 100vw;
-      height: calc(-webkit-fill-available - 20px);
+      height: -webkit-fill-available;
       display: block;    /* インライン要素の特性を防ぐ */
       touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
     }
@@ -73,7 +73,8 @@
     name="name_id"
     value="donut"
     required
-    maxlength="25"/>
+    maxlength="25"
+    size=40/>
   <model-viewer
     ar
     ar-modes="scene-viewer webxr quick-look"
