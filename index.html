@@ -70,14 +70,15 @@
 </head>
 <body>
   <div style="display:flex;align-items:center;">
-  <label style="margin-left:5px;margin-right:3px;" for="name_id">ID:</label><input
-    type="text"
-    id="name_id"
-    name="name_id"
-    value="donut"
-    required
-    maxlength="25"
-  />
+    <label style="margin-left:5px;margin-right:3px;" for="name_id">ID:</label><input
+      type="text"
+      id="name_id"
+      name="name_id"
+      value="donut"
+      required
+      maxlength="25"
+    />
+  </div>
   <model-viewer
     ar
     ar-modes="scene-viewer webxr quick-look"
@@ -90,7 +91,6 @@
     loading="eager">
     <div slot="progress-bar" class="progress-bar">
       <div class="update-bar"></div>
-    </div>
   </model-viewer>
     </div>
   <script>
