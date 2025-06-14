@@ -12,6 +12,7 @@
       padding: 0;
       overflow: hidden; /* 全体のスクロールを無効にする */
       height: 100%;
+      touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
     }
     
      /* 共通スタイル */
@@ -58,7 +59,6 @@
       width: 100vw;
       height: 100dvh ;
       display: block;    /* インライン要素の特性を防ぐ */
-      touch-action: pan-y; /* タッチ操作によるスクロールやパンを無効化 */
     }
     /* Webkit-fill-available未対応のブラウザ向けのスタイル */
     @media (max-width: 767px) {
